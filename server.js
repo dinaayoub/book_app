@@ -122,12 +122,8 @@ function createSearch(req, res) {
   }
   superagent.get(url)
     .then(data => {
-      var i = 0;
       if (data.body.items) {
-        data.body.items.map((item) => {
-          booksArray.push(new Book(item, i));
-          i++;
-        });
+        booksArray=data.body.items.map((item,i) => new Book(item, i));
         res.render('pages/searches/show', { booksArray: booksArray, page: 'search' });
       }
       else handleErrors(new Error('No results found'),res);
