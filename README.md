@@ -108,3 +108,13 @@ Finish time: 7:15 pm
 Actual time needed to complete: 75 min
 
 -----------------------------------------------------------------------------------------
+
+Number and name of feature: Lab 13 - #1 Update book
+
+Estimate of time needed to complete: 60 min
+
+Start time: 11:45
+
+Finish time: _____
+
+Actual time needed to complete: _____
