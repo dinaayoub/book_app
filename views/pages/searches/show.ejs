@@ -9,7 +9,7 @@
 <body>
     <main>
         <ul>
-            <% booksArray.forEach(book => {%>
+            <% book.forEach(book => {%>
             <li class="bookResult">
                 <img class ="bookImage" src=<%= book.image_url%> />
                 <p class = "bookTitle"><%= book.title %></p>

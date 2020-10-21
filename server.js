@@ -24,6 +24,7 @@ client.on('error', err => console.error(err));
 
 //handle application routes
 app.get('/', getBooksFromDB);
+app.get('/books/:id', getBookDetails);
 
 app.get('/searches', (req, res) => {
   res.render('pages/searches/show', {
@@ -42,6 +43,15 @@ app.get('*', (req, res) => {
 
 var booksArray = [];
 
+function getBookDetails(req, res) {
+  let SQL = `SELECT * FROM books WHERE id=$1`;
+  let values = [req.params.id];
+  client.query(SQL,values)
+    .then(result => {
+      res.render('pages/books/show', { book: result.rows[0] })
+    })
+    .catch(err => console.error(err));
+}
 function getBooksFromDB(req, res) {
   let SQL = 'SELECT * FROM books';
   client.query(SQL)

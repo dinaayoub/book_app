@@ -17,10 +17,14 @@
             <ul>
                 <% books.forEach(book => {%>
                 <li class="bookResult">
-                    <img class ="bookImage" src=<%= book.image_url%> />
-                    <p class = "bookTitle"><%= book.title %></p>
-                    <p class="bookAuthor"><em><%= book.author %></em></p>
+                    <!-- - include('books/detail') %> -->
+                    <img class="bookImage" src=<%= book.image_url%> />
+                    <p class="bookTitle"><%= book.title %></p>
+                    <p class="bookDetailedInfo"><%= book.author %></p>
                     <p class="bookDescription"><%= book.description %></p>
+                    <form action="books/<%=book.id%>">
+                        <button class="smallButton" type="submit">View Details</button>
+                    </form>
                 </li>
                 <%}) %>
             </ul>

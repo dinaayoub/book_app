@@ -1,10 +1,11 @@
 #headerDiv {
-    background-color: black;
+    background-color: rgb(69, 1, 75);
     padding: 15px 20px;
+    position: relative;
 }
 
 #burgerMenu {
-    float: right;
-    height: 24pt;
-
+    position: absolute;
+    top: 0;
+    right:0;
 }

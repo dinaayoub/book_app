@@ -3,13 +3,13 @@
     margin: 20px 0px;
     padding: 5px;
     color: black;
-    width: 90%;
+    width: 100%;
     font: 16pt Arial;
 }
 
 .radioDiv {
-    width: 90%;
-    background-color: lightgrey;
+    width: 100%;
+    background-color: rgb(255, 230, 234);
     padding: 10px;
     margin: 20px;
     text-align: left;
@@ -17,17 +17,21 @@
 }
 
 button {
-    background-color: black;
+    background-color: rebeccapurple;
     color:white;
-    padding: 20px;
+    padding: 10px;
     margin: 20px;
-    width: 90%;
+    width: 100%;
     font: 20pt;
     font: 16pt Arial;
 }
 
+.smallButton {
+    width: 20vw;
+}
+
 .bookResult {
-    background-color: lightgrey;
+    background-color: rgb(255, 230, 234);
     width: 90%;
     margin: 40px;
     padding: 40px;
@@ -35,15 +39,14 @@ button {
 
 .bookTitle{
     color: white;
-    text-shadow: gray;
-    font: 18pt Arial;
+    font: 18pt Arial ;
     padding: 5px;
+    text-shadow: 2px 2px darkslategrey;
 }
 
-.bookAuthor{
+.bookDetailedInfo{
     color: grey;
-    font-style: italic;
-    font: 14pt Arial;
+    font: italic 12pt Arial;
     padding: 5px;
     padding-bottom: 10px;
 }

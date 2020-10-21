@@ -2,7 +2,6 @@
 @import 'layout.css';
 @import 'modules.css';
 
-
 h1 {
     display: inline;
     font: 24pt Arial;
@@ -24,8 +23,16 @@ main {
 }
 
 body {
-    background: rgb(124, 124, 124);
+    background: lightpink;
     max-width: 960px;
     margin: auto;
     padding: 20px;
+}
+
+a{
+    display: block;
+    background-color: rebeccapurple;
+    padding: 20px;
+    border: 1px solid purple;
+    color: white;
 }
