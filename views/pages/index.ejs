@@ -12,6 +12,16 @@
         <h2>Click below to search through Google Books API
             <br><a href="/searches/new">CLICK HERE</a>
         </h2>
-        
+        <ul>
+            <% result.forEach(element => { %>
+                <li> <h2>title:<%= element.title %></h2> 
+                    <h2>Author: <%= element.author %></h2>
+                    <img src= <% element.img %> >
+                    <p><% element.description %> </p>
+                    <p><% element.isbn %> </p>
+                </li>
+           <% }) %>
+           <li>number of book save: <%= result.length %> </li>
+        </ul>   
     </body>
 </html>

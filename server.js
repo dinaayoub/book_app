@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 const superagent = require('superagent');
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err=> console.error(err));
 
 const PORT = process.env.PORT || 3000;
 
@@ -23,7 +27,17 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('pages/index');
+  let SQL = 'SELECT * FROM book;';
+  return client.query(SQL)
+    .then(data => {
+      if (data.rows.count === 0) {
+        res.render('pages/searches/new');
+      } else {
+        console.log('===========');
+        res.render('pages/index', ({ result: data.rows }));
+      }
+    })
+    .catch(err => console.log('error', err));
 });
 
 app.get('/searches', (req, res) => {
