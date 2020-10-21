@@ -1,7 +1,28 @@
-<div id="headerDiv">
-    <h1 id="headerBooks">Best Books!</h1><img src="/assets/burgerMenu.jpg" id="burgerMenu">
+<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- "Hamburger menu" to toggle the navigation links -->
+<div class="topNavigation">
+    <div class="headerDiv"><h1 id="bestBooksHeader">Best Books!</h1></div>
+    <div class="burgerMenuHeader">
+        <a class="burgerMenu" href="javascript:void(0);" onclick="burgerMenuClick()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <!-- Navigation links (hidden by default) -->
+    <div id="navLinks">
+        <a href="/">Home</a>
+        <a href="/searches/new">Search the Google Books API</a>
+    </div>
 </div>
-<div class="burgerMenuDropDown">
-    <h3><a href="/">Home</a></h3>
-    <h3><a href="/searches/new">Search the Google Books API</a></h3>
-</div>
+
+<script>
+    function burgerMenuClick() {
+        var menu = document.getElementById('navLinks');
+        if (menu.style.display === 'none') {
+            menu.style.display = 'block';
+        } else {
+            menu.style.display = 'none';
+        }
+    }
+</script>

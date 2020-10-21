@@ -32,6 +32,8 @@ Database schema:
         description TEXT
 
 ## Change Log
+
+10/20/2020 5:42pm - App now retrieves saved books from the database.
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
@@ -39,12 +41,15 @@ Database schema:
 
 ## Credits and Collaborations
 
-Collaboration with Ryan Pilon on day 1 of the lab ()
+Collaboration with Ryan Pilon for lab 11. 
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+Links:
+[Used to build navigation bar](https://www.w3schools.com/howto/howto_js_mobile_navbar.asp)
 
 ## Features
 
-Number and name of feature: #1 Setup
+Number and name of feature: Lab 11 - #1 Setup
 
 Estimate of time needed to complete: 1 hr
 
@@ -56,7 +61,7 @@ Actual time needed to complete: 1hr
 
 -----------------------------------------------------------------------------------------
 
-Number and name of feature: #2 - Search
+Number and name of feature: Lab 11 - #2 - Search
 
 Estimate of time needed to complete: 30min
 
@@ -68,19 +73,7 @@ Actual time needed to complete: 20 min
 
 -----------------------------------------------------------------------------------------
 
-Number and name of feature: #3 - Get Results
-
-Estimate of time needed to complete: 30min
-
-Start time: 2:35
-
-Finish time:
-
-Actual time needed to complete: 1 hour
-
------------------------------------------------------------------------------------------
-
-Number and name of feature: #3 to 6- Get Results
+Number and name of feature: Lab 11 - #3 to 6- Get Results
 
 Estimate of time needed to complete:
 
@@ -92,14 +85,26 @@ Actual time needed to complete: 4 hours with a 2.5 hour break
 
 -----------------------------------------------------------------------------------------
 
-Number and name of feature: Lab 12 - #1
+Number and name of feature: Lab 12 - #1 Index shows saved books
 
 Estimate of time needed to complete: 30min
 
 Start time: 5:09 pm
 
-Finish time:
+Finish time: 5:41 pm
 
-Actual time needed to complete:
+Actual time needed to complete: 32 min
+
+-----------------------------------------------------------------------------------------
+
+Number and name of feature: Lab 12 - #2 View Details
+
+Estimate of time needed to complete: 60min
+
+Start time: 6:00 pm
+
+Finish time: 7:15 pm
+
+Actual time needed to complete: 75 min
 
 -----------------------------------------------------------------------------------------

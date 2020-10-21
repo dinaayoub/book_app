@@ -11,16 +11,13 @@
     </header>
     <main>
         <section class="book">
-            <h2>
+            <h2 class="headerDiv">
                 <%= books.length %> Saved Books
             </h2>
             <ul>
                 <% books.forEach(book => {%>
                 <li class="bookResult">
-                    <img class ="bookImage" src=<%= book.image_url%> />
-                    <p class = "bookTitle"><%= book.title %></p>
-                    <p class="bookAuthor"><em><%= book.author %></em></p>
-                    <p class="bookDescription"><%= book.description %></p>
+                    <%- include('books/detail', { book:book, page }) %>
                 </li>
                 <%}) %>
             </ul>

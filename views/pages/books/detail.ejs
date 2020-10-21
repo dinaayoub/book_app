@@ -1,0 +1,35 @@
+<section>
+    <ul>
+        <li class="bookResult">
+            <img class="bookImage" src=<%= book.image_url%> />
+            <p class="bookTitle" name="title"><%= book.title %></p>
+
+            <!-- Just some cleanliness in the UI by removing the object notation around authors-->
+            <% if (book.author) { book.author = book.author.replace('{','');%>
+            <% book.author = book.author.replace('}',''); %>
+            <% book.author = book.author.replace(/"/g,' ');} %>
+            <p class="bookDetailedInfo" name="author"><%= book.author %></p>
+            
+            <% if(page==='allBooks') { %>
+                <form class="viewDetails" action="books/<%=book.id%>">
+                    <button class="smallButton" type="submit">View Details</button>
+                </form>
+            <% } else if (page === 'search') { %>
+                <p class="bookDescription" name="description"><%= book.description %></p>
+                <form action="/books" method="post">
+                    <fieldset>
+                        <input type="hidden" name="index" value=<%=index%> />
+                        <button class="smallButton" type="submit">Save to my Library</button>
+                    </fieldset>
+                </form>
+            <%} else { %>
+                <p class="bookDescription" name="description"><%= book.description %></p>
+                <p class="bookDetailedInfo bookISBN">ISBN: <%= book.isbn %></p>
+                <p class="bookDetailedInfo bookBookshelf">Bookshelf: <%= book.shelf %></p>
+                <form class="back" action="/">
+                    <button class="smallButton" type="submit">Back</button>
+                </form>
+            <% } %>
+        </li>
+    </ul>
+</section>

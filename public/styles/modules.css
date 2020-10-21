@@ -3,13 +3,11 @@
     margin: 20px 0px;
     padding: 5px;
     color: black;
-    width: 90%;
     font: 16pt Arial;
 }
 
 .radioDiv {
-    width: 90%;
-    background-color: lightgrey;
+    background-color: rgb(255, 230, 234);
     padding: 10px;
     margin: 20px;
     text-align: left;
@@ -17,33 +15,32 @@
 }
 
 button {
-    background-color: black;
+    background-color:  rgb(69, 1, 75);
     color:white;
-    padding: 20px;
+    padding: 10px;
     margin: 20px;
-    width: 90%;
+    width: 100%;
     font: 20pt;
     font: 16pt Arial;
+    width: 20vw;
 }
 
 .bookResult {
-    background-color: lightgrey;
-    width: 90%;
+    background-color: rgb(255, 230, 234);
     margin: 40px;
     padding: 40px;
 }
 
 .bookTitle{
     color: white;
-    text-shadow: gray;
-    font: 18pt Arial;
+    font: 18pt Arial ;
     padding: 5px;
+    text-shadow: 2px 2px  rgb(69, 1, 75);
 }
 
-.bookAuthor{
+.bookDetailedInfo{
     color: grey;
-    font-style: italic;
-    font: 14pt Arial;
+    font: italic 12pt Arial;
     padding: 5px;
     padding-bottom: 10px;
 }
@@ -53,4 +50,13 @@ button {
     font: 12pt Arial;
     text-align: left;
     padding: 5px;
+}
+
+#navLinks {
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font: 16pt Arial;
+    background-color: rebeccapurple;
+    
 }
