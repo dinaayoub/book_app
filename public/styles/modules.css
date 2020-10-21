@@ -1,13 +1,26 @@
-.inputQuery {
+input {
     border: none;
     margin: 20px 0px;
     padding: 5px;
     color: black;
     font: 16pt Arial;
+    width: 90%;
 }
 
+.largeInputBox {
+    border: none;
+    margin: 20px 0px;
+    padding: 5px;
+    color: black;
+    font: 16pt Arial;
+    height: 20vw;
+    text-align: left;
+    vertical-align: text-top;
+    width: 90%;
+}
 .radioDiv {
     background-color: rgb(255, 230, 234);
+    color: rgb(69, 1, 75);
     padding: 10px;
     margin: 20px;
     text-align: left;
@@ -17,12 +30,23 @@
 button {
     background-color:  rgb(69, 1, 75);
     color:white;
+    font: 16pt Arial;
+}
+
+.fullWidthButton {
     padding: 10px;
     margin: 20px;
-    width: 100%;
-    font: 20pt;
-    font: 16pt Arial;
-    width: 20vw;
+    width: 90%;
+}
+
+.smallButton {
+    font-size: 12pt;
+    padding: 10px;
+    margin: 10px;
+}
+
+.updateOrDeleteForm{
+    display: inline;
 }
 
 .bookResult {
@@ -57,6 +81,6 @@ button {
     padding: 5px;
     text-align: center;
     font: 16pt Arial;
-    background-color: rebeccapurple;
+    background-color: rgb(99, 6, 99);
     
 }

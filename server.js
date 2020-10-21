@@ -6,6 +6,7 @@ const env = require('dotenv');
 const app = express();
 const pg = require('pg');
 const superagent = require('superagent');
+const methodOverride = require('method-override');
 
 //server side configuration
 env.config();
@@ -13,9 +14,10 @@ const PORT = process.env.PORT || 3000;
 const client = new pg.Client(process.env.DATABASE_URL);
 
 //front end configuration
-app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
+app.use(methodOverride('_method'));
+app.set('view engine', 'ejs');
 
 //connect to the database
 client.connect();
@@ -25,6 +27,9 @@ client.on('error', error => handleErrors(error));
 //handle application routes
 app.get('/', getAllBooks);
 app.get('/books/:id', getBookDetails);
+app.put('/books/:id', updateBook);
+app.get('/books/edit/:id', getBookDetailsForEditing);
+app.delete('/books/:id', deleteBook);
 
 app.get('/searches', (req, res) => {
   res.render('pages/searches/show', { booksArray: booksArray });
@@ -39,7 +44,7 @@ app.post('/searches', createSearch);
 app.post('/books', saveBook);
 
 app.get('*', (req, res) => {
-  res.render('pages/error', handleErrors(res, new Error('Page not found')));
+  res.render('pages/error', handleErrors(new Error('Page not found')));
 });
 
 var booksArray = [];
@@ -51,7 +56,17 @@ function getBookDetails(req, res) {
     .then(result => {
       res.render('pages/books/show', { book: result.rows[0], page: 'oneBookDetails' })
     })
-    .catch(error => handleErrors(res, error));
+    .catch(error => handleErrors(error));
+}
+
+function getBookDetailsForEditing(req, res) {
+  let SQL = `SELECT * FROM books WHERE id=$1`;
+  let values = [req.params.id];
+  client.query(SQL, values)
+    .then(result => {
+      res.render('pages/books/edit', { book: result.rows[0], page: 'updateBook' })
+    })
+    .catch(error => handleErrors(error));
 }
 
 function getAllBooks(req, res) {
@@ -60,7 +75,7 @@ function getAllBooks(req, res) {
     .then(results => {
       res.render('pages/index', { books: results.rows, page: 'allBooks' });
     })
-    .catch(error => handleErrors(res, error));
+    .catch(error => handleErrors(error));
 }
 
 function saveBook(req, res) {
@@ -73,7 +88,32 @@ function saveBook(req, res) {
       req.params.id = data.rows[0].id;
       getBookDetails(req, res);
     })
-    .catch(error => handleErrors(res, error));
+    .catch(error => handleErrors(error));
+}
+
+function updateBook(req, res) {
+  let {title, author, description, isbn, shelf} = req.body;
+  let id = req.params.id;
+  let values = [title, author, description, isbn, shelf, id];
+  let SQL = `UPDATE books SET title = $1, author = $2, description = $3, isbn = $4, shelf = $5  WHERE id=$6`;
+  client.query(SQL, values)
+    .then(() => {
+      getBookDetails(req, res);
+    })
+    .catch(error => handleErrors(error));
+}
+
+function deleteBook(req, res) {
+  let id = req.params.id;
+  let values = [id];
+  let SQL = `DELETE FROM books WHERE id=$1`
+  client.query(SQL,values)
+    .then(() => {
+      //res.redirect('pages/index')
+      res.redirect('/');
+      //getAllBooks(req,res);
+    })
+    .catch(error => handleErrors(error));
 }
 
 function createSearch(req, res) {
@@ -93,13 +133,14 @@ function createSearch(req, res) {
       });
       res.render('pages/searches/show', { booksArray: booksArray, page: 'search' });
     })
-    .catch(error => handleErrors(res, error));
+    .catch(error => handleErrors(error));
 }
 
-function handleErrors(res, err) {
-  //console.error(error);
-  res.render('pages/error', { error: err });
+function handleErrors(err) {
+  console.error(err);
+  //this.render('pages/error', { error: err });
 }
+
 app.listen(PORT, () => {
   console.log('server is up at ' + PORT);
 });
