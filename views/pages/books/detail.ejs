@@ -3,27 +3,14 @@
         <li class="bookResult">
 
             <% if(page==='allBooks') { %>
-            <img class="bookImage" src=<%= book.image_url%> />
-            <p class="bookTitle" name="title"><%= book.title %></p>
-
-            <!-- Just some cleanliness in the UI by removing the object notation around authors-->
-            <% if (book.author) { book.author = book.author.replace('{','');%>
-            <% book.author = book.author.replace('}',''); %>
-            <% book.author = book.author.replace(/"/g,' ');} %>
-            <p class="bookDetailedInfo" name="author"><%= book.author %></p>
+            <%- include('basic-details') %>
             <form class="viewDetails" action="books/<%=book.id%>">
                 <button class="smallButton" type="submit">View Details</button>
             </form>
             <% } else if (page === 'search') { %>
-                <img class="bookImage" src=<%= book.image_url%> />
-                <p class="bookTitle" name="title"><%= book.title %></p>
-    
-                <!-- Just some cleanliness in the UI by removing the object notation around authors-->
-                <% if (book.author) { book.author = book.author.replace('{','');%>
-                <% book.author = book.author.replace('}',''); %>
-                <% book.author = book.author.replace(/"/g,' ');} %>
-                <p class="bookDetailedInfo" name="author"><%= book.author %></p>
-                <p class="bookDescription" name="description"><%= book.description %></p>
+
+            <%- include('basic-details') %>
+            <p class="bookDescription" name="description"><%= book.description %></p>
             <form action="/books" method="post">
                 <fieldset>
                     <input type="hidden" name="index" value=<%=index%> />
@@ -31,18 +18,12 @@
                 </fieldset>
             </form>
             <%} else if (page ==='oneBookDetails') { %>
-                <img class="bookImage" src=<%= book.image_url%> />
-                <p class="bookTitle" name="title"><%= book.title %></p>
-    
-                <!-- Just some cleanliness in the UI by removing the object notation around authors-->
-                <% if (book.author) { book.author = book.author.replace('{','');%>
-                <% book.author = book.author.replace('}',''); %>
-                <% book.author = book.author.replace(/"/g,' ');} %>
-                <p class="bookDetailedInfo" name="author"><%= book.author %></p>
-                <p class="bookDescription" name="description"><%= book.description %></p>
+
+            <%- include('basic-details') %>
+            <p class="bookDescription" name="description"><%= book.description %></p>
             <p class="bookDetailedInfo bookISBN">ISBN: <%= book.isbn %></p>
             <p class="bookDetailedInfo bookBookshelf">Bookshelf: <%= book.shelf %></p>
-            <form action="/books/edit/<%=book.id%>">
+            <form  class="updateOrDeleteForm" action="/books/edit/<%=book.id%>">
                 <button class="smallButton" type="submit">Update Book</button>
             </form>
             <form class="updateOrDeleteForm" action="/books/<%=book.id%>?_method=DELETE" method="POST">
