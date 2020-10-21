@@ -1,20 +1,17 @@
 'use strict';
 
 const express = require('express');
-
 const env = require('dotenv');
-
 const app = express();
-
 env.config();
-
 app.set('view engine', 'ejs');
-
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static('./public'));
-
 const superagent = require('superagent');
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
+
+client.connect();
 
 const PORT = process.env.PORT || 3000;
 
@@ -23,9 +20,15 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('pages/index');
+  let SQL = 'SELECT * FROM book;';
+  console.log('here+++++++');
+  return client.query(SQL)
+    .then(data => {
+      console.log(data);
+      res.render('pages/index', {result: data.rows});
+    })
+    .catch(err =>console.error('error', err));
 });
-
 app.get('/searches', (req, res) => {
   res.render('pages/searches/show', {
     booksArray: booksArray
@@ -52,7 +55,7 @@ function createSearch(req, res) {
     url += `+inauthor:${req.body.search[0]}`;
   }
   superagent.get(url)
-  
+
     .then(data => {
       data.body.items.map((item) => booksArray.push(new Book(item)));
       res.render('pages/searches/show', { booksArray: booksArray });
