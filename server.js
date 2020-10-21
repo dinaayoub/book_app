@@ -19,17 +19,32 @@ app.use(express.static('./public'));
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
-//connect to the database
-client.connect();
-//if there are any errors, log them
-client.on('error', error => handleErrors(error));
 
-//handle application routes
-app.get('/', getAllBooks);
-app.get('/books/:id', getBookDetails);
-app.put('/books/:id', updateBook);
-app.get('/books/edit/:id', getBookDetailsForEditing);
-app.delete('/books/:id', deleteBook);
+const superagent = require('superagent');
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err=> console.error(err));
+
+const PORT = process.env.PORT || 3000;
+
+app.get('/hello', (req, res) => {
+  res.render('pages/index');
+});
+
+app.get('/', (req, res) => {
+  let SQL = 'SELECT * FROM book;';
+  return client.query(SQL)
+    .then(data => {
+      if (data.rows.count === 0) {
+        res.render('pages/searches/new');
+      } else {
+        console.log('===========');
+        res.render('pages/index', ({ result: data.rows }));
+      }
+    })
+    .catch(err => console.log('error', err));
+});
 
 app.get('/searches', (req, res) => {
   res.render('pages/searches/show', { booksArray: booksArray });
