@@ -1,11 +1,16 @@
-#headerDiv {
+.headerDiv {
     background-color: rgb(69, 1, 75);
     padding: 15px 20px;
-    position: relative;
+    color: white;
+    font: 20pt Arial;
 }
 
-#burgerMenu {
-    position: absolute;
-    top: 0;
+.topNavigation{
+    position: relative;
+}
+.burgerMenuHeader{
+    position: absolute;   
     right:0;
+    top:0;
+    background-color: rgb(69, 1, 75);
 }

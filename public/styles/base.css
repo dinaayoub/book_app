@@ -3,14 +3,13 @@
 @import 'modules.css';
 
 h1 {
-    display: inline;
     font: 24pt Arial;
     color: white;
 }
 
 h2 {
     color: white;
-    background: rgb(70, 70, 70);
+    background: rgb(68, 5, 77);
     padding: 20px;
     text-align: center;
     font: 20pt Arial;
@@ -18,12 +17,11 @@ h2 {
 
 main {
    margin: auto;
-   max-width: 90%;
    text-align: center;
 }
 
 body {
-    background: lightpink;
+    background: rgb(211, 179, 184);
     max-width: 960px;
     margin: auto;
     padding: 20px;
@@ -31,8 +29,6 @@ body {
 
 a{
     display: block;
-    background-color: rebeccapurple;
     padding: 20px;
-    border: 1px solid purple;
     color: white;
 }

@@ -9,12 +9,9 @@
 <body>
     <main>
         <ul>
-            <% book.forEach(book => {%>
+            <% booksArray.forEach(book => {%>
             <li class="bookResult">
-                <img class ="bookImage" src=<%= book.image_url%> />
-                <p class = "bookTitle"><%= book.title %></p>
-                <p class="bookAuthor"><em><%= book.author %></em></p>
-                <p class="bookDescription"><%= book.description %></p>
+                <%- include('../books/detail', { book:book, page: 'search', index:book.index }) %>
             </li>
             <%}) %>
         </ul>

@@ -103,8 +103,8 @@ Estimate of time needed to complete: 60min
 
 Start time: 6:00 pm
 
-Finish time: pm
+Finish time: 7:15 pm
 
-Actual time needed to complete:  min
+Actual time needed to complete: 75 min
 
 -----------------------------------------------------------------------------------------
