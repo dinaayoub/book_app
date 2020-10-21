@@ -1,0 +1,8 @@
+<img class="bookImage" src=<%= book.image_url%> />
+<p class="bookTitle" name="title"><%= book.title %></p>
+
+<!-- Just some cleanliness in the UI by removing the object notation around authors-->
+<% if (book.author) { book.author = book.author.replace('{','');%>
+<% book.author = book.author.replace('}',''); %>
+<% book.author = book.author.replace(/"/g,' ');} %>
+<p class="bookDetailedInfo" name="author"><%= book.author %></p>

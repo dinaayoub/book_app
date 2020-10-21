@@ -18,7 +18,6 @@
 * ejs
 * cors
 
-
 ### Database Architecture
 Database name: book_app
 Database schema:
@@ -33,7 +32,9 @@ Database schema:
 
 ## Change Log
 
-10/20/2020 5:42pm - App now retrieves saved books from the database.
+10/21/2020 1:44pm - App now allows updating and deleting books from your shelf (update/delete books)
+10/20/2020 11:00pm - App now shows you details of a saved book. (view book details)
+10/20/2020 5:42pm - App now retrieves saved books from the database. (view all books)
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
@@ -109,12 +110,12 @@ Actual time needed to complete: 75 min
 
 -----------------------------------------------------------------------------------------
 
-Number and name of feature: Lab 13 - #1 Update book
+Number and name of feature: Lab 13 - #1 & #2 Update/Delete book
 
-Estimate of time needed to complete: 60 min
+Estimate of time needed to complete: 2hr min
 
 Start time: 11:45
 
-Finish time: _____
+Finish time: 1:30pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1hr 45 min with a few breaks.

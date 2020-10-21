@@ -43,9 +43,7 @@ app.post('/searches', createSearch);
 
 app.post('/books', saveBook);
 
-app.get('*', (req, res) => {
-  res.render('pages/error', handleErrors(new Error('Page not found')));
-});
+
 
 var booksArray = [];
 
@@ -56,7 +54,7 @@ function getBookDetails(req, res) {
     .then(result => {
       res.render('pages/books/show', { book: result.rows[0], page: 'oneBookDetails' })
     })
-    .catch(error => handleErrors(error));
+    .catch(error => handleErrors(error,res));
 }
 
 function getBookDetailsForEditing(req, res) {
@@ -66,7 +64,7 @@ function getBookDetailsForEditing(req, res) {
     .then(result => {
       res.render('pages/books/edit', { book: result.rows[0], page: 'updateBook' })
     })
-    .catch(error => handleErrors(error));
+    .catch(error => handleErrors(error,res));
 }
 
 function getAllBooks(req, res) {
@@ -88,11 +86,11 @@ function saveBook(req, res) {
       req.params.id = data.rows[0].id;
       getBookDetails(req, res);
     })
-    .catch(error => handleErrors(error));
+    .catch(error => handleErrors(error,res));
 }
 
 function updateBook(req, res) {
-  let {title, author, description, isbn, shelf} = req.body;
+  let { title, author, description, isbn, shelf } = req.body;
   let id = req.params.id;
   let values = [title, author, description, isbn, shelf, id];
   let SQL = `UPDATE books SET title = $1, author = $2, description = $3, isbn = $4, shelf = $5  WHERE id=$6`;
@@ -107,13 +105,11 @@ function deleteBook(req, res) {
   let id = req.params.id;
   let values = [id];
   let SQL = `DELETE FROM books WHERE id=$1`
-  client.query(SQL,values)
+  client.query(SQL, values)
     .then(() => {
-      //res.redirect('pages/index')
       res.redirect('/');
-      //getAllBooks(req,res);
     })
-    .catch(error => handleErrors(error));
+    .catch(error => handleErrors(error,res));
 }
 
 function createSearch(req, res) {
@@ -127,19 +123,25 @@ function createSearch(req, res) {
   superagent.get(url)
     .then(data => {
       var i = 0;
-      data.body.items.map((item) => {
-        booksArray.push(new Book(item, i));
-        i++;
-      });
-      res.render('pages/searches/show', { booksArray: booksArray, page: 'search' });
+      if (data.body.items) {
+        data.body.items.map((item) => {
+          booksArray.push(new Book(item, i));
+          i++;
+        });
+        res.render('pages/searches/show', { booksArray: booksArray, page: 'search' });
+      }
+      else handleErrors(new Error('No results found'),res);
     })
-    .catch(error => handleErrors(error));
+    .catch(error => handleErrors(error, res));
 }
 
-function handleErrors(err) {
-  console.error(err);
-  //this.render('pages/error', { error: err });
+function handleErrors(error, res) {
+  if (!error.message) error = new Error('page not found');
+  console.error(error);
+  res.render('pages/error', { error: error });
 }
+
+app.get('*', handleErrors);
 
 app.listen(PORT, () => {
   console.log('server is up at ' + PORT);
