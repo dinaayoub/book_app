@@ -1,6 +1,6 @@
 # Book App
 
-**Author**: Dina Ayoub
+**Author**: Will, Garrett, Ryan 
 **Version**: 1.0.0 
 
 ## Overview
