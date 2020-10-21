@@ -1,30 +1,29 @@
 'use strict';
 
+//pull in dependencies
 const express = require('express');
-
 const env = require('dotenv');
-
 const app = express();
-
-env.config();
-
-app.set('view engine', 'ejs');
-
-app.use(express.urlencoded({ extended: true }));
-
-app.use(express.static('./public'));
-
+const pg = require('pg');
 const superagent = require('superagent');
 
+//server side configuration
+env.config();
 const PORT = process.env.PORT || 3000;
+const client = new pg.Client(process.env.DATABASE_URL);
 
-app.get('/hello', (req, res) => {
-  res.render('pages/index');
-});
+//front end configuration
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('./public'));
 
-app.get('/', (req, res) => {
-  res.render('pages/index');
-});
+//connect to the database
+client.connect();
+//if there are any errors, log them
+client.on('error', err => console.error(err));
+
+//handle application routes
+app.get('/', getBooksFromDB);
 
 app.get('/searches', (req, res) => {
   res.render('pages/searches/show', {
@@ -42,6 +41,16 @@ app.get('*', (req, res) => {
 });
 
 var booksArray = [];
+
+function getBooksFromDB(req, res) {
+  let SQL = 'SELECT * FROM books';
+  client.query(SQL)
+    .then(results => {
+      res.render('pages/index', { books: results.rows });
+    })
+    .catch(err => console.error(err));
+
+}
 
 function createSearch(req, res) {
   let url = 'https://www.googleapis.com/books/v1/volumes?maxResults=10&projection=full&q=';
@@ -71,17 +80,18 @@ function Book(bookData) {
   if (bookData.volumeInfo.imageLinks && bookData.volumeInfo.imageLinks.thumbnail) {
 
     if (!bookData.volumeInfo.imageLinks.thumbnail.startsWith('https')) {
-      this.img = bookData.volumeInfo.imageLinks.thumbnail.replace('http', 'https');
+      this.image_url = bookData.volumeInfo.imageLinks.thumbnail.replace('http', 'https');
     }
     else {
-      this.img = bookData.volumeInfo.imageLinks.thumbnail;
+      this.image_url = bookData.volumeInfo.imageLinks.thumbnail;
     }
   }
   else {
-    this.img = `https://i.imgur.com/J5LVHEL.jpg`;
+    this.image_url = `https://i.imgur.com/J5LVHEL.jpg`;
   }
-  this.title = bookData.volumeInfo.title ? bookData.volumeInfo.title : `Book Title (Unknown)`;
+  this.title = bookData.volumeInfo.title ? bookData.volumeInfo.title : `Book Title Unknown`;
   this.author = bookData.volumeInfo.authors ? bookData.volumeInfo.authors : `Book Authors Unknown`;
-  this.description = bookData.volumeInfo.description ? bookData.volumeInfo.description : `Book description unavailable`;
+  this.description = bookData.volumeInfo.description ? bookData.volumeInfo.description : `Book Description Unknown`;
+  this.isbn = bookData.volumeInfo.isbn ? bookData.volumeInfo.isbn : `ISBN Unknown`;
 }
 

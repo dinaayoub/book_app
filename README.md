@@ -11,15 +11,36 @@
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+### Dependencies
+* express
+* pg
+* dotenv
+* ejs
+* cors
+
+
+### Database Architecture
+Database name: book_app
+Database schema:
+    table: books
+    columns:
+        id SERIAL PRIMARY KEY,
+        author VARCHAR(255),
+        title VARCHAR(255),
+        isbn  VARCHAR(255),
+        image_url  VARCHAR(255),
+        description TEXT
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+-->
 
 ## Credits and Collaborations
+
+Collaboration with Ryan Pilon on day 1 of the lab ()
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
 
 ## Features
 
@@ -53,7 +74,7 @@ Estimate of time needed to complete: 30min
 
 Start time: 2:35
 
-Finish time: 
+Finish time:
 
 Actual time needed to complete: 1 hour
 
@@ -68,3 +89,17 @@ Start time: 2:35
 Finish time: 9 pm
 
 Actual time needed to complete: 4 hours with a 2.5 hour break
+
+-----------------------------------------------------------------------------------------
+
+Number and name of feature: Lab 12 - #1
+
+Estimate of time needed to complete: 30min
+
+Start time: 5:09 pm
+
+Finish time:
+
+Actual time needed to complete:
+
+-----------------------------------------------------------------------------------------
