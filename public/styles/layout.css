@@ -1,11 +1,25 @@
-#headerDiv {
-    background-color: black;
+.headerDiv {
+    background-color: rgb(69, 1, 75);
     padding: 15px 20px;
+    color: white;
+    font: 20pt Arial;
 }
 
-#burgerMenu {
-    float: right;
-    height: 24pt;
-
+.topNavigation{
+    position: relative;
 }
 
+.burgerMenuHeader{
+    position: absolute;   
+    right:0;
+    top:0;
+    background-color: rgb(69, 1, 75);
+}
+
+.footer {
+    text-align: center;
+}
+input {
+    padding: 10px;
+    margin: 5px;
+}

@@ -8,9 +8,7 @@
 
 <body>
     <header>
-        <div id="headerDiv">
-            <h1 id="headerBooks">Best Books!</h1><img src="/assets/burgerMenu.jpg" id="burgerMenu">
-        </div>
+        <%- include('../../layout/header') %>
         <h2>Search by Title or Author</h2>
     </header>
     <main>
@@ -23,7 +21,7 @@
 
                 <div class="radioDiv">Author<input type="radio" name="search" value="author" required></div>
             </fieldset>
-            <button type="submit">Search GBooks API</button>
+            <button class="fullWidthButton" type="submit">Search GBooks API</button>
         </form>
     </main>
 </body>

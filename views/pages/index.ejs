@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
     <head>
         <title>Book App</title>
         <link rel="stylesheet" type="text/css" href="/styles/reset.css">
@@ -24,4 +25,34 @@
            <li>number of book save: <%= result.length %> </li>
         </ul>   
     </body>
+=======
+
+<head>
+    <%- include('../layout/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include('../layout/header') %>
+    </header>
+    <main>
+        <section class="book">
+            <h2 class="headerDiv">
+                <%= books.length %> Saved Books
+            </h2>
+            <ul>
+                <% books.forEach(book => {%>
+                <li class="bookResult">
+                    <%- include('books/detail', { book:book, page }) %>
+                </li>
+                <%}) %>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <%- include('../layout/footer') %>
+    </footer>
+</body>
+
+
 </html>

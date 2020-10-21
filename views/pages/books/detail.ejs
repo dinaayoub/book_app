@@ -1,0 +1,69 @@
+<section>
+    <ul>
+        <li class="bookResult">
+
+            <% if(page==='allBooks') { %>
+            <img class="bookImage" src=<%= book.image_url%> />
+            <p class="bookTitle" name="title"><%= book.title %></p>
+
+            <!-- Just some cleanliness in the UI by removing the object notation around authors-->
+            <% if (book.author) { book.author = book.author.replace('{','');%>
+            <% book.author = book.author.replace('}',''); %>
+            <% book.author = book.author.replace(/"/g,' ');} %>
+            <p class="bookDetailedInfo" name="author"><%= book.author %></p>
+            <form class="viewDetails" action="books/<%=book.id%>">
+                <button class="smallButton" type="submit">View Details</button>
+            </form>
+            <% } else if (page === 'search') { %>
+                <img class="bookImage" src=<%= book.image_url%> />
+                <p class="bookTitle" name="title"><%= book.title %></p>
+    
+                <!-- Just some cleanliness in the UI by removing the object notation around authors-->
+                <% if (book.author) { book.author = book.author.replace('{','');%>
+                <% book.author = book.author.replace('}',''); %>
+                <% book.author = book.author.replace(/"/g,' ');} %>
+                <p class="bookDetailedInfo" name="author"><%= book.author %></p>
+                <p class="bookDescription" name="description"><%= book.description %></p>
+            <form action="/books" method="post">
+                <fieldset>
+                    <input type="hidden" name="index" value=<%=index%> />
+                    <button class="smallButton" type="submit">Save to my Library</button>
+                </fieldset>
+            </form>
+            <%} else if (page ==='oneBookDetails') { %>
+                <img class="bookImage" src=<%= book.image_url%> />
+                <p class="bookTitle" name="title"><%= book.title %></p>
+    
+                <!-- Just some cleanliness in the UI by removing the object notation around authors-->
+                <% if (book.author) { book.author = book.author.replace('{','');%>
+                <% book.author = book.author.replace('}',''); %>
+                <% book.author = book.author.replace(/"/g,' ');} %>
+                <p class="bookDetailedInfo" name="author"><%= book.author %></p>
+                <p class="bookDescription" name="description"><%= book.description %></p>
+            <p class="bookDetailedInfo bookISBN">ISBN: <%= book.isbn %></p>
+            <p class="bookDetailedInfo bookBookshelf">Bookshelf: <%= book.shelf %></p>
+            <form action="/books/edit/<%=book.id%>">
+                <button class="smallButton" type="submit">Update Book</button>
+            </form>
+            <form class="updateOrDeleteForm" action="/books/<%=book.id%>?_method=DELETE" method="POST">
+                <button class="smallButton" type="submit">Delete Book</button>
+            </form>
+            <% } else if (page === 'updateBook') {%>
+            <form class="updateOrDeleteForm" action="/books/<%=book.id%>?_method=PUT" method="POST">
+                <div><input class="inputBox" type="text" name="title" value="<%= book.title %>" placeholder="Title">
+                </div>
+                <div><input class="inputBox" type="text" name="author" value="<%= book.author %>"
+                        placeholder="Author(s)"></div>
+                <div><input class="inputBox" type="text" name="isbn" value="<%= book.isbn %>" placeholder="ISBN"></div>
+                <div><input class="inputBox" type="text" name="image_url" value="<%=book.image_url%>"
+                        placeholder="Image URL"></div>
+                <div><textarea class="largeInputBox" name="description" value="<%= book.description %>"
+                        placeholder="Description"><%= book.description %></textarea></div>
+                <div><input class="inputBox" type="text" name="shelf" value="<%= book.shelf %>" placeholder="Bookshelf">
+                </div>
+                <div><button class="smallButton" type="submit">Update Book</button></div>
+            </form>
+            <% } %>
+        </li>
+    </ul>
+</section>

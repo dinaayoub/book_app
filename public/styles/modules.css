@@ -1,15 +1,26 @@
-.inputQuery {
+input {
     border: none;
     margin: 20px 0px;
     padding: 5px;
     color: black;
-    width: 90%;
     font: 16pt Arial;
+    width: 90%;
 }
 
-.radioDiv {
+.largeInputBox {
+    border: none;
+    margin: 20px 0px;
+    padding: 5px;
+    color: black;
+    font: 16pt Arial;
+    height: 20vw;
+    text-align: left;
+    vertical-align: text-top;
     width: 90%;
-    background-color: lightgrey;
+}
+.radioDiv {
+    background-color: rgb(255, 230, 234);
+    color: rgb(69, 1, 75);
     padding: 10px;
     margin: 20px;
     text-align: left;
@@ -17,33 +28,43 @@
 }
 
 button {
-    background-color: black;
+    background-color:  rgb(69, 1, 75);
     color:white;
-    padding: 20px;
-    margin: 20px;
-    width: 90%;
-    font: 20pt;
     font: 16pt Arial;
 }
 
-.bookResult {
-    background-color: lightgrey;
+.fullWidthButton {
+    padding: 10px;
+    margin: 20px;
     width: 90%;
+}
+
+.smallButton {
+    font-size: 12pt;
+    padding: 10px;
+    margin: 10px;
+}
+
+.updateOrDeleteForm{
+    display: inline;
+}
+
+.bookResult {
+    background-color: rgb(255, 230, 234);
     margin: 40px;
     padding: 40px;
 }
 
 .bookTitle{
     color: white;
-    text-shadow: gray;
-    font: 18pt Arial;
+    font: 18pt Arial ;
     padding: 5px;
+    text-shadow: 2px 2px  rgb(69, 1, 75);
 }
 
-.bookAuthor{
+.bookDetailedInfo{
     color: grey;
-    font-style: italic;
-    font: 14pt Arial;
+    font: italic 12pt Arial;
     padding: 5px;
     padding-bottom: 10px;
 }
@@ -53,4 +74,13 @@ button {
     font: 12pt Arial;
     text-align: left;
     padding: 5px;
+}
+
+#navLinks {
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font: 16pt Arial;
+    background-color: rgb(99, 6, 99);
+    
 }
