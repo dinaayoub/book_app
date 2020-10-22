@@ -1,0 +1,56 @@
+.inputQuery {
+    border: none;
+    margin: 20px 0px;
+    padding: 5px;
+    color: black;
+    width: 90%;
+    font: 16pt Arial;
+}
+
+.radioDiv {
+    width: 90%;
+    background-color: lightgrey;
+    padding: 10px;
+    margin: 20px;
+    text-align: left;
+    font: 16pt Arial;
+}
+
+button {
+    background-color: black;
+    color:white;
+    padding: 20px;
+    margin: 20px;
+    width: 90%;
+    font: 20pt;
+    font: 16pt Arial;
+}
+
+.bookResult {
+    background-color: lightgrey;
+    width: 90%;
+    margin: 40px;
+    padding: 40px;
+}
+
+.bookTitle{
+    color: white;
+    text-shadow: gray;
+    font: 18pt Arial;
+    padding: 5px;
+}
+
+.bookAuthor{
+    color: grey;
+    font-style: italic;
+    font: 14pt Arial;
+    padding: 5px;
+    padding-bottom: 10px;
+}
+
+.bookDescription{
+    color: grey;
+    font: 12pt Arial;
+    text-align: left;
+    padding: 5px;
+}

@@ -7,17 +7,28 @@
 </head>
 
 <body>
-    <ul>
-        <% booksArray.forEach(book => {%>
-        <li>
-            <img src=<%= book.img%>/>
-            <p>Title: <%= book.title %></p>
-            <p>Author: <%= book.author %></p>
-            <p>Description: <%= book.description %></p>
-        </li>
-        <%}) %>
-    </ul>
-
+    
+    <main>
+        
+        <ul>
+            <% booksArray.forEach(book => {%>
+            <li class="bookResult">
+                <img class ="bookImage" src="<%= book.img%>" />
+                <p class = "bookTitle"><%= book.title %></p>
+                <p class="bookAuthor"><em><%= book.author %></em></p>
+                <p class="bookDescription"><%= book.description %></p>
+                <form action="/books" method="post">
+                <input type="hidden" name="title" value="<%=book.title %>">
+                <input type="hidden" name="author" value="<%=book.author %>">
+                <input type="hidden" name="thumbnail" value="<%=book.img %>">
+                <input type="hidden" name="description" value="<%=book.description%>">
+                <input type="submit" value="Save Book">
+            </form>
+            </li>
+            <%}) %>
+        </ul>
+        <a href="/">home</a>
+    </main>
 </body>
 
 </html>

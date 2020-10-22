@@ -55,16 +55,16 @@ Start time: 2:35
 
 Finish time: 
 
-Actual time needed to complete: 
+Actual time needed to complete: 1 hour
 
 -----------------------------------------------------------------------------------------
 
-Number and name of feature: #3 - Get Results
+Number and name of feature: #3 to 6- Get Results
 
-Estimate of time needed to complete: 30min
+Estimate of time needed to complete:
 
 Start time: 2:35
 
-Finish time: 
+Finish time: 9 pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 4 hours with a 2.5 hour break

@@ -1,13 +1,32 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Book App</title>
-        <link rel="stylesheet" type="text/css" href="/styles/reset.css">
-        <link rel="stylesheet" type="text/css" href="/styles/base.css">
-        <link rel="stylesheet" type="text/css" href="/styles/layout.css">
-        <link rel="stylesheet" type="text/css" href="/styles/modules.css">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+
+<head>
+    <title>Book App</title>
+    <link rel="stylesheet" type="text/css" href="/styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/styles/modules.css">
+</head>
+
+<body>
+    <h1>Hello World!</h1>
+    <h2>Click below to search through Google Books API
+        <br><a href="/searches/new">CLICK HERE</a>
+    </h2>
+    <%= booksArray.length %> Saved Books
+    <ul>
+        <% booksArray.forEach(book => {%>
+        <li class="bookResult">
+            <img class ="bookImage" src="<%= book.img %>"" />
+            <p class = "bookTitle"><%= book.title %></p>
+            <p class="bookAuthor"><em><%= book.author %></em></p>
+            <p class="bookDescription"><%= book.description %></p>
+            <form action="/" method="post"></form>
+        </li>
+        <%}) %>
+    </ul>
+
+</body>
+
 </html>

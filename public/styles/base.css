@@ -9,20 +9,9 @@ h1 {
     color: white;
 }
 
-#headerDiv {
-    background-color: black;
-    padding: 15px 20px;
-}
-
-#burgerMenu {
-    float: right;
-    height: 24pt;
-
-}
-
 h2 {
     color: white;
-    background: darkgrey;
+    background: rgb(70, 70, 70);
     padding: 20px;
     text-align: center;
     font: 20pt Arial;
@@ -30,18 +19,13 @@ h2 {
 
 main {
    margin: auto;
-   max-width: 50vw;
+   max-width: 90%;
+   text-align: center;
 }
 
 body {
-    background: lightgray;
+    background: rgb(124, 124, 124);
     max-width: 960px;
     margin: auto;
-}
-
-.inputQuery {
-    border: none;
-    margin: 20px;
-    color: black;
-    width: 90%;
+    padding: 20px;
 }
